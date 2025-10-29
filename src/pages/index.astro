@@ -1,0 +1,628 @@
+---
+// src/pages/index.astro
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vidurai - The Conscience of the Machine</title>
+  <meta name="description" content="Teaching AI the ancient art of memory and strategic forgetting. The first memory system that knows when to forget.">
+</head>
+<body>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="om-symbol">🕉️</div>
+        <h1 class="title">Vidurai</h1>
+        <p class="subtitle">The Conscience of the Machine</p>
+        <p class="sanskrit">"विस्मृति भी विद्या है"</p>
+        <p class="translation">Forgetting too is knowledge</p>
+        <p class="tagline">
+          Teaching AI the ancient art of memory and strategic forgetting,<br>
+          inspired by Vidura's wisdom from the Mahabharata
+        </p>
+        <div class="cta-buttons">
+          <a href="https://github.com/chandantochandan/vidurai" class="btn btn-primary" target="_blank">
+            View on GitHub
+          </a>
+          <a href="https://docs.vidurai.ai" class="btn btn-secondary">
+            Read the Docs
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Question Section -->
+    <section class="question">
+      <div class="container">
+        <h2>Why Vidurai?</h2>
+        <p class="lead">
+          While everyone races to give AI perfect memory,<br>
+          we asked a different question:
+        </p>
+        <p class="big-question">What if forgetting is the key to true intelligence?</p>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+      <div class="container">
+        <h2>🎯 The Problem We Solve</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Store everything, remember nothing useful</h3>
+            <p>Current AI memory systems treat all information equally, leading to noise drowning out signal.</p>
+          </div>
+          <div class="card">
+            <h3>Costs explode with token accumulation</h3>
+            <p>Every API call gets more expensive as context windows fill with irrelevant data.</p>
+          </div>
+          <div class="card">
+            <h3>No distinction between important and trivial</h3>
+            <p>Your preference for vegetarian food is stored with the same weight as "hmm, let me think."</p>
+          </div>
+          <div class="card">
+            <h3>Memory becomes noise over time</h3>
+            <p>Without intelligent decay, the signal-to-noise ratio only gets worse.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+      <div class="container">
+        <h2>✨ The Vidurai Solution</h2>
+        
+        <div class="architecture">
+          <h3>Three-Kosha Memory Architecture</h3>
+          <p class="subtitle-text">Inspired by Vedantic consciousness layers</p>
+          
+          <div class="koshas">
+            <div class="kosha">
+              <div class="kosha-icon">💨</div>
+              <h4>Annamaya Kosha</h4>
+              <p class="kosha-subtitle">The Physical Sheath</p>
+              <p>High-speed, volatile working memory. A sliding window for immediate context. Built for speed, not permanence.</p>
+            </div>
+            
+            <div class="kosha">
+              <div class="kosha-icon">🧠</div>
+              <h4>Manomaya Kosha</h4>
+              <p class="kosha-subtitle">The Mental Sheath</p>
+              <p>Active episodic memory with intelligent decay. Memories fade based on relevance and usage, not just time.</p>
+            </div>
+            
+            <div class="kosha">
+              <div class="kosha-icon">💎</div>
+              <h4>Vijnanamaya Kosha</h4>
+              <p class="kosha-subtitle">The Wisdom Sheath</p>
+              <p>Deep archival memory. Distilled wisdom, core preferences, foundational knowledge. Updated, never forgotten.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="features">
+          <h3>Vismriti Engine - The Art of Strategic Forgetting</h3>
+          <div class="feature-grid">
+            <div class="feature">
+              <div class="metric">90%</div>
+              <p>Fewer tokens in context</p>
+            </div>
+            <div class="feature">
+              <div class="metric">70%</div>
+              <p>Lower API costs</p>
+            </div>
+            <div class="feature">
+              <div class="metric">10x</div>
+              <p>Better relevance</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="viveka">
+          <h3>Viveka Layer - The Autonomous Conscience</h3>
+          <p>What separates Vidurai from a simple database:</p>
+          <ul>
+            <li><strong>Autonomous Importance Scoring:</strong> Scores memories based on emotional significance, user goals, and surprising content</li>
+            <li><strong>Dharma Alignment:</strong> Programmable ethical guardrails to prevent storing biased or harmful information</li>
+            <li><strong>Learns What Matters:</strong> Adapts its understanding of importance based on user interactions</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section class="quickstart">
+      <div class="container">
+        <h2>🚀 Quick Start</h2>
+        <div class="code-example">
+          <pre><code>pip install vidurai</code></pre>
+        </div>
+        <div class="code-example">
+          <pre><code>from vidurai import Vidurai
+
+# Awaken Vidurai's conscience
+memory = Vidurai()
+
+# Simply tell Vidurai what happened
+memory.remember(
+    session_id="user123",
+    content="My name is Alice. I'm a vegetarian planning a trip to Japan."
+)
+memory.remember(
+    session_id="user123", 
+    content="Hmm, let me think about the dates."
+)
+
+# Later, recall only what's relevant
+context = memory.recall(
+    session_id="user123",
+    query="What are some good food options there?"
+)
+
+# Returns: "User is Alice. User is a vegetarian. 
+#           User is planning a trip to Japan."
+# The trivial "hmm" is automatically forgotten.</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy">
+      <div class="container">
+        <h2>📖 Philosophy</h2>
+        <p class="lead">
+          Vidurai is named after the wise minister from the Mahabharata, known for:
+        </p>
+        <div class="philosophy-grid">
+          <div class="philosophy-item">
+            <div class="philosophy-icon">⚖️</div>
+            <h4>Speaking truth to power</h4>
+          </div>
+          <div class="philosophy-item">
+            <div class="philosophy-icon">🧭</div>
+            <h4>Ethical decision-making</h4>
+          </div>
+          <div class="philosophy-item">
+            <div class="philosophy-icon">🎯</div>
+            <h4>Strategic wisdom</h4>
+          </div>
+        </div>
+        <p class="philosophy-statement">
+          We embed these principles in code, creating AI that doesn't just remember—it remembers <em>wisely</em>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community">
+      <div class="container">
+        <h2>🤝 Join the Sangha</h2>
+        <p class="lead">
+          Vidurai is built by the community, for the community.<br>
+          Be part of building the conscience layer for AI.
+        </p>
+        <div class="cta-buttons">
+          <a href="https://discord.gg/vidurai" class="btn btn-primary" target="_blank">
+            Join Discord
+          </a>
+          <a href="https://github.com/chandantochandan/vidurai" class="btn btn-secondary" target="_blank">
+            Contribute on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p class="sanskrit-footer">जय विदुराई</p>
+        <p class="translation-footer">Victory to Vidurai</p>
+        <p class="copyright">Building the conscience layer for AI, one memory at a time</p>
+        <p class="license">MIT License © 2025 Vidurai</p>
+      </div>
+    </footer>
+  </main>
+</body>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --color-primary: #7c3aed;
+    --color-secondary: #4f46e5;
+    --color-accent: #f59e0b;
+    --color-bg: #ffffff;
+    --color-bg-alt: #f9fafb;
+    --color-text: #1f2937;
+    --color-text-light: #6b7280;
+    --color-border: #e5e7eb;
+    --spacing: 1rem;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-bg);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  h1, h2, h3, h4 {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+  }
+
+  .om-symbol {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+  }
+
+  .sanskrit {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+  }
+
+  .translation {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+  }
+
+  .tagline {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    opacity: 0.9;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: white;
+    color: var(--color-primary);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Question Section */
+  .question {
+    background: var(--color-bg-alt);
+    text-align: center;
+  }
+
+  .lead {
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+  }
+
+  .big-question {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Problem Section */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+
+  .card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+
+  /* Solution Section */
+  .solution {
+    background: var(--color-bg-alt);
+  }
+
+  .subtitle-text {
+    text-align: center;
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: 3rem;
+    font-style: italic;
+  }
+
+  .architecture h3,
+  .features h3,
+  .viveka h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--color-secondary);
+  }
+
+  .koshas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .kosha {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    border: 2px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .kosha:hover {
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+  }
+
+  .kosha-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .kosha h4 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .kosha-subtitle {
+    font-style: italic;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0 4rem;
+  }
+
+  .feature {
+    text-align: center;
+  }
+
+  .metric {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .viveka {
+    background: white;
+    padding: 3rem;
+    border-radius: 1rem;
+    border-left: 5px solid var(--color-primary);
+  }
+
+  .viveka ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .viveka li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .viveka li:last-child {
+    border-bottom: none;
+  }
+
+  /* Quick Start Section */
+  .quickstart {
+    background: #1f2937;
+    color: white;
+  }
+
+  .quickstart h2 {
+    color: white;
+  }
+
+  .code-example {
+    background: #111827;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+
+  .code-example pre {
+    margin: 0;
+  }
+
+  .code-example code {
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #10b981;
+  }
+
+  /* Philosophy Section */
+  .philosophy {
+    background: var(--color-bg-alt);
+    text-align: center;
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .philosophy-item {
+    padding: 2rem;
+  }
+
+  .philosophy-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .philosophy-item h4 {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+  }
+
+  .philosophy-statement {
+    font-size: 1.5rem;
+    max-width: 700px;
+    margin: 2rem auto 0;
+    font-style: italic;
+  }
+
+  /* Community Section */
+  .community {
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+  }
+
+  .community h2,
+  .community .lead {
+    color: white;
+  }
+
+  /* Footer */
+  footer {
+    background: #1f2937;
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  .sanskrit-footer {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .translation-footer {
+    font-size: 1.125rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+  }
+
+  .copyright {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .license {
+    font-size: 0.875rem;
+    opacity: 0.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 3rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+    }
+    
+    .big-question {
+      font-size: 1.75rem;
+    }
+  }
+</style>
+</html>
