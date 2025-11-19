@@ -564,13 +564,21 @@
 
     /* --- RESPONSIVE --- */
     @media (max-width: 900px) {
-        .hero-section { grid-template-columns: 1fr; text-align: left; }
-        .display-title { font-size: 3.5rem; }
+        .hero-section { grid-template-columns: 1fr; text-align: left; min-height: auto; padding-top: 40px; }
+        .hero-visual-col { order: -1; margin-bottom: 40px; } /* Visual first on mobile */
+        .display-title { font-size: 3rem; }
+        .lead-text { font-size: 1rem; }
         .schematic-layout { grid-template-columns: 1fr; }
         .bar-center { display: none; }
         .dt-row { grid-template-columns: 1fr 1fr; }
         .dt-col:nth-child(2) { display: none; } /* Hide legacy col on mobile */
         .tech-grid { flex-direction: column; }
+        
+        /* Tighter mobile spacing */
+        section { padding: 40px 20px; }
+        .top-bar { padding: 0 16px; }
+        .cmd-row { width: 100%; max-width: 100%; font-size: 11px; }
+        .stat-val { font-size: 1.5rem; }
     }
 </style>
 </body>
