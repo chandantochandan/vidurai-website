@@ -1,2131 +1,577 @@
 ---
-// Vidurai - Enhanced Landing Page
-// Preserving Three-Kosha Architecture + Adding ROI Calculator
+// Vidurai - Industrial/High-Density Aesthetic
+// Design Direction: Raw data, Swiss grid, dense information, technical precision.
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidurai - Autonomous Memory Optimization</title>
+    <meta name="description" content="Reinforcement-learning powered memory management. Reduce LLM token costs by 59%.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Fonts: Sora (Headings), IBM Plex Sans (Body), JetBrains Mono (Code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <title>Vidurai - Save $15K/Year on AI Tokens | 59% Token Reduction</title>
-    <meta name="description" content="Intelligent AI memory management. Reduce token costs by 59%, save 90% time. Production-validated for any AI coding assistant. Free VS Code extension & Python SDK.">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Vidurai - Save $15K/Year on AI Tokens">
-    <meta property="og:description" content="59% token reduction, 90% time savings, 95.6/100 quality score. Free VS Code extension.">
-    <meta property="og:url" content="https://vidurai.ai">
-    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vidurai">
     <meta property="og:image" content="https://vidurai.ai/logo.jpg">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="player">
-    <meta name="twitter:title" content="Vidurai - Save $15K/Year on AI Tokens">
-    <meta name="twitter:description" content="59% token reduction, 90% time savings. Free VS Code extension.">
-    <meta name="twitter:image" content="https://vidurai.ai/logo.jpg">
-    <meta name="twitter:player" content="https://www.youtube.com/embed/gV4sPkl5qns">
-    <meta name="twitter:player:width" content="1280">
-    <meta name="twitter:player:height" content="720">
-
-    <!-- Video Meta Tags -->
-    <meta property="og:video" content="https://www.youtube.com/embed/gV4sPkl5qns">
-    <meta property="og:video:type" content="text/html">
-    <meta property="og:video:width" content="1280">
-    <meta property="og:video:height" content="720">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2">
-    <link rel="apple-touch-icon" href="/logo.jpg">
-
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Vidurai",
-      "description": "Intelligent AI memory management. 59% token reduction, 90% time savings. Privacy-first, open-source.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Windows, macOS, Linux",
-      "offers": [{
-        "@type": "Offer",
-        "name": "Vidurai SDK",
-        "price": "0",
-        "priceCurrency": "USD",
-        "url": "https://pypi.org/project/vidurai/"
-      }, {
-        "@type": "Offer",
-        "name": "VS Code Extension",
-        "price": "0",
-        "priceCurrency": "USD",
-        "url": "https://marketplace.visualstudio.com/items?itemName=vidurai.vidurai"
-      }],
-      "screenshot": "https://vidurai.ai/logo.jpg",
-      "author": {
-        "@type": "Organization",
-        "name": "Vidurai Project"
-      },
-      "license": "https://opensource.org/licenses/MIT"
-    }
-    </script>
 </head>
-
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    :root {
-        --primary: #7c3aed;
-        --secondary: #4f46e5;
-        --accent: #f59e0b;
-        --success: #10b981;
-        --error: #ef4444;
-        --bg-dark: #0f172a;
-        --bg-card: rgba(30, 41, 59, 0.5);
-        --border: #334155;
-        --text-primary: #f1f5f9;
-        --text-secondary: #cbd5e1;
-        --text-muted: #64748b;
-    }
-
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: var(--bg-dark);
-        color: var(--text-primary);
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
-
-    /* Animated Background */
-    .bg-animated {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        z-index: -1;
-    }
-
-    .bg-animated::before {
-        content: '';
-        position: absolute;
-        width: 200%;
-        height: 200%;
-        background-image:
-            radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
-        animation: float 20s ease-in-out infinite;
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translate(0, 0); }
-        50% { transform: translate(-50px, -50px); }
-    }
-
-    /* Header */
-    header {
-        padding: 1.5rem 5%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid var(--border);
-        backdrop-filter: blur(10px);
-        background: rgba(15, 23, 42, 0.8);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        text-decoration: none;
-    }
-
-    .logo img {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-    }
-
-    nav {
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-    }
-
-    nav a {
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s;
-    }
-
-    nav a:hover {
-        color: var(--accent);
-    }
-
-    .btn {
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s;
-        display: inline-block;
-        border: none;
-        cursor: pointer;
-        font-size: 1rem;
-    }
-
-    .btn-primary {
-        background: linear-gradient(135deg, var(--accent), var(--success));
-        color: white;
-        box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-primary::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-    }
-
-    .btn-primary:hover::before {
-        width: 300px;
-        height: 300px;
-    }
-
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(245, 158, 11, 0.5);
-    }
-
-    .btn-secondary {
-        border: 2px solid var(--primary);
-        color: var(--text-primary);
-        background: transparent;
-    }
-
-    .btn-secondary:hover {
-        background: rgba(124, 58, 237, 0.1);
-        border-color: var(--accent);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
-    }
-
-    .btn-large {
-        padding: 1rem 2rem;
-        font-size: 1.125rem;
-        border-radius: 0.75rem;
-        font-weight: 700;
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        flex-direction: column;
-    }
-
-    /* Container */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 5%;
-    }
-
-    /* Hero Section */
-    .hero {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 5rem 5% 3rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-    }
-
-    .hero-foundation {
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-    }
-
-    .hero-left h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-        background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .hero-subtitle {
-        font-size: 1.125rem;
-        color: var(--text-secondary);
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-    }
-
-    .tagline {
-        font-size: 1.125rem;
-        color: var(--accent);
-        margin-bottom: 1rem;
-        font-style: italic;
-    }
-
-    .hero-stats {
-        display: flex;
-        gap: 1.5rem;
-        margin: 1.5rem 0;
-        flex-wrap: wrap;
-    }
-
-    .hero-stats span {
-        background: var(--bg-card);
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        font-size: 0.875rem;
-        border: 1px solid var(--border);
-    }
-
-    .hero-stats-inline {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin: 1.5rem 0;
-        font-size: 0.875rem;
-    }
-
-    .hero-stats-inline span {
-        background: rgba(124, 58, 237, 0.1);
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        border: 1px solid var(--primary);
-        white-space: nowrap;
-    }
-
-    .hero-ctas {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-        margin: 2rem 0 1rem;
-    }
-
-    .btn-label {
-        font-size: 0.75rem;
-        opacity: 0.8;
-        display: block;
-        font-weight: 500;
-        margin-bottom: 0.25rem;
-    }
-
-    .hero-note {
-        text-align: center;
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-        margin-top: 1rem;
-    }
-
-    .hero-subtext {
-        color: var(--text-muted);
-        font-size: 0.875rem;
-        margin-top: 1rem;
-    }
-
-    .hero-right {
-        text-align: center;
-    }
-
-    .demo-placeholder {
-        background: var(--bg-card);
-        border: 2px dashed var(--border);
-        border-radius: 1rem;
-        padding: 4rem 2rem;
-        text-align: center;
-    }
-
-    .demo-placeholder .icon {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-    }
-
-    .demo-video-container {
-        position: relative;
-        border-radius: 1rem;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        border: 2px solid var(--primary);
-        background: rgba(15, 23, 42, 0.8);
-    }
-
-    .demo-video-container iframe {
-        width: 100%;
-        aspect-ratio: 16/9;
-        display: block;
-    }
-
-    .video-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-        padding: 1.5rem;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .demo-video-container:hover .video-overlay {
-        opacity: 1;
-    }
-
-    .video-caption {
-        color: white;
-        text-align: center;
-        margin: 0;
-    }
-
-    .video-caption a {
-        color: var(--accent);
-        text-decoration: none;
-        font-size: 0.875rem;
-        font-weight: 600;
-    }
-
-    .video-caption a:hover {
-        text-decoration: underline;
-    }
-
-    /* Stats Bar */
-    .stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 4rem auto;
-        padding: 0 5%;
-    }
-
-    .stat {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 1rem;
-        padding: 2rem;
-        text-align: center;
-        backdrop-filter: blur(10px);
-        transition: transform 0.3s, border-color 0.3s;
-    }
-
-    .stat:hover {
-        transform: translateY(-5px);
-        border-color: var(--accent);
-    }
-
-    .stat-number {
-        font-size: 3rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--accent) 0%, var(--success) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .stat-label {
-        color: var(--text-secondary);
-        margin-top: 0.5rem;
-        font-size: 1rem;
-    }
-
-    /* Social Proof */
-    .social-proof {
-        max-width: 1200px;
-        margin: 4rem auto 2rem;
-        padding: 0 5%;
-        text-align: center;
-    }
-
-    .proof-heading {
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    .proof-stats {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-    }
-
-    .proof-item {
-        text-align: center;
-        padding: 1.5rem 1rem;
-        background: rgba(30, 41, 59, 0.3);
-        border: 1px solid var(--border);
-        border-radius: 0.75rem;
-        transition: transform 0.3s, border-color 0.3s;
-    }
-
-    .proof-item:hover {
-        transform: translateY(-4px);
-        border-color: var(--primary);
-    }
-
-    .proof-number {
-        font-size: 1.75rem;
-        font-weight: 800;
-        color: var(--accent);
-        margin-bottom: 0.5rem;
-    }
-
-    .proof-label {
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-    }
-
-    /* Section */
-    .section {
-        max-width: 1200px;
-        margin: 6rem auto;
-        padding: 0 5%;
-    }
-
-    h2 {
-        font-size: 2.5rem;
-        text-align: center;
-        margin-bottom: 3rem;
-        font-weight: 700;
-    }
-
-    /* ROI Calculator */
-    .calculator {
-        background: var(--bg-card);
-        border: 2px solid var(--accent);
-        border-radius: 1rem;
-        padding: 3rem;
-        margin: 6rem auto;
-        max-width: 900px;
-        backdrop-filter: blur(10px);
-    }
-
-    .calculator h2 {
-        color: var(--accent);
-        margin-bottom: 2rem;
-    }
-
-    .calculator-inputs {
-        margin-bottom: 3rem;
-    }
-
-    .calculator-inputs label {
-        display: block;
-        margin-bottom: 2rem;
-        font-size: 1.125rem;
-    }
-
-    .slider-value {
-        color: var(--accent);
-        font-weight: 700;
-        font-size: 1.25rem;
-    }
-
-    .calculator-inputs input[type="range"] {
-        width: 100%;
-        height: 8px;
-        background: var(--border);
-        border-radius: 5px;
-        outline: none;
-        margin-top: 0.5rem;
-    }
-
-    .calculator-inputs input[type="range"]::-webkit-slider-thumb {
-        appearance: none;
-        width: 24px;
-        height: 24px;
-        background: var(--accent);
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    .calculator-inputs input[type="range"]::-moz-range-thumb {
-        width: 24px;
-        height: 24px;
-        background: var(--accent);
-        border-radius: 50%;
-        cursor: pointer;
-        border: none;
-    }
-
-    .calculator-results {
-        text-align: center;
-    }
-
-    .savings-amount {
-        font-size: 4rem;
-        font-weight: 800;
-        color: var(--success);
-        margin: 1rem 0 2rem;
-    }
-
-    .breakdown {
-        width: 100%;
-        margin: 2rem auto;
-        border-collapse: collapse;
-        max-width: 600px;
-    }
-
-    .breakdown th,
-    .breakdown td {
-        padding: 1rem;
-        text-align: left;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .breakdown th {
-        color: var(--text-secondary);
-        font-weight: 600;
-    }
-
-    .breakdown .highlight {
-        color: var(--success);
-        font-weight: 700;
-    }
-
-    .calculator-note {
-        text-align: center;
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-        margin-top: 2rem;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.6;
-    }
-
-    .calculator-note a {
-        color: var(--accent);
-        text-decoration: none;
-    }
-
-    .calculator-note a:hover {
-        text-decoration: underline;
-    }
-
-    /* Before/After Comparison */
-    .comparison {
-        margin: 6rem auto;
-    }
-
-    .comparison-grid {
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        gap: 2rem;
-        align-items: center;
-    }
-
-    .comparison-side {
-        padding: 2rem;
-        border-radius: 1rem;
-        border: 2px solid;
-    }
-
-    .comparison-without {
-        background: rgba(239, 68, 68, 0.05);
-        border-color: var(--error);
-    }
-
-    .comparison-with {
-        background: rgba(16, 185, 129, 0.05);
-        border-color: var(--success);
-    }
-
-    .comparison-side h3 {
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-    }
-
-    .comparison-side ul {
-        list-style: none;
-    }
-
-    .comparison-side li {
-        padding: 1rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 1.125rem;
-    }
-
-    .comparison-side li:last-child {
-        border-bottom: none;
-    }
-
-    .comparison-divider {
-        font-size: 2rem;
-        font-weight: 800;
-        color: var(--text-muted);
-    }
-
-    /* How It Works */
-    .how-it-works {
-        margin: 6rem auto;
-    }
-
-    .steps {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 2rem;
-    }
-
-    .step {
-        flex: 1;
-        text-align: center;
-        padding: 2rem;
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 1rem;
-        position: relative;
-        transition: transform 0.3s, border-color 0.3s;
-    }
-
-    .step:hover {
-        transform: translateY(-8px);
-        border-color: var(--accent);
-    }
-
-    .step-number {
-        position: absolute;
-        top: -1.25rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2.5rem;
-        height: 2.5rem;
-        background: var(--accent);
-        color: var(--bg-dark);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 800;
-        font-size: 1.25rem;
-    }
-
-    .step-icon {
-        font-size: 3rem;
-        margin: 1rem 0;
-    }
-
-    .step h3 {
-        margin: 1rem 0;
-        font-size: 1.5rem;
-    }
-
-    .step p {
-        color: var(--text-secondary);
-        line-height: 1.8;
-    }
-
-    .step-arrow {
-        font-size: 2rem;
-        color: var(--accent);
-        flex-shrink: 0;
-    }
-
-    /* Three-Kosha Architecture (PRESERVED) */
-    .kosha-architecture {
-        background: var(--bg-card);
-        border: 2px solid var(--primary);
-        border-radius: 1rem;
-        padding: 3rem;
-        margin: 6rem auto;
-        max-width: 1200px;
-    }
-
-    .kosha-architecture h2 {
-        color: var(--primary);
-        margin-bottom: 1rem;
-    }
-
-    .kosha-subtitle {
-        text-align: center;
-        color: var(--text-secondary);
-        font-style: italic;
-        margin-bottom: 3rem;
-        font-size: 1.125rem;
-    }
-
-    .koshas {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    .kosha {
-        background: rgba(15, 23, 42, 0.5);
-        padding: 2.5rem;
-        border-radius: 1rem;
-        text-align: center;
-        border: 2px solid var(--border);
-        transition: all 0.3s ease;
-    }
-
-    .kosha:hover {
-        border-color: var(--primary);
-        transform: scale(1.05);
-    }
-
-    .kosha-icon {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 1.5rem;
-        display: block;
-        border-radius: 12px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
-
-    .kosha-icon:hover {
-        transform: scale(1.1);
-    }
-
-    .kosha h4 {
-        font-size: 1.5rem;
-        color: var(--primary);
-        margin-bottom: 0.5rem;
-    }
-
-    .kosha-layer-subtitle {
-        font-style: italic;
-        color: var(--text-secondary);
-        margin-bottom: 1rem;
-        font-size: 0.95rem;
-    }
-
-    .kosha p {
-        color: var(--text-secondary);
-        line-height: 1.8;
-    }
-
-    .kosha-note {
-        text-align: center;
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--border);
-        color: var(--text-secondary);
-        font-size: 0.875rem;
-        line-height: 1.6;
-    }
-
-    .kosha-note a {
-        color: var(--primary);
-        text-decoration: none;
-    }
-
-    .kosha-note a:hover {
-        text-decoration: underline;
-    }
-
-    /* Architecture Section */
-    .architecture-section {
-        background: rgba(30, 41, 59, 0.3);
-        border: 1px solid var(--primary);
-        border-radius: 1rem;
-        padding: 3rem 2rem;
-        margin: 6rem auto;
-    }
-
-    .section-subtitle {
-        text-align: center;
-        color: var(--text-secondary);
-        max-width: 700px;
-        margin: 0 auto 3rem;
-        line-height: 1.6;
-    }
-
-    .architecture-diagram {
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-
-    .arch-layer {
-        background: rgba(15, 23, 42, 0.5);
-        border: 1px solid var(--border);
-        border-radius: 1rem;
-        padding: 2rem;
-        margin: 1rem 0;
-    }
-
-    .arch-layer h3 {
-        text-align: center;
-        margin-bottom: 1.5rem;
-        color: var(--text-primary);
-    }
-
-    .arch-ui .arch-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-    }
-
-    .arch-card {
-        background: rgba(124, 58, 237, 0.1);
-        border: 1px solid var(--primary);
-        border-radius: 0.75rem;
-        padding: 1.5rem;
-        text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .arch-card.arch-active {
-        border-color: var(--accent);
-        background: rgba(245, 158, 11, 0.1);
-    }
-
-    .arch-card.arch-coming {
-        opacity: 0.6;
-        border-style: dashed;
-    }
-
-    .arch-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
-    }
-
-    .arch-icon {
-        font-size: 2.5rem;
-        display: block;
-        margin-bottom: 0.75rem;
-    }
-
-    .arch-card h4 {
-        margin: 0.5rem 0;
-        color: var(--text-primary);
-        font-size: 1.125rem;
-    }
-
-    .arch-card p {
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-        margin: 0.5rem 0;
-    }
-
-    .arch-link {
-        display: inline-block;
-        margin-top: 0.5rem;
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.875rem;
-    }
-
-    .arch-link:hover {
-        text-decoration: underline;
-    }
-
-    .arch-arrow {
-        text-align: center;
-        padding: 1rem 0;
-    }
-
-    .arch-core {
-        background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(245, 158, 11, 0.2));
-        border: 2px solid var(--primary);
-        text-align: center;
-    }
-
-    .arch-core-features {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        margin: 1.5rem 0;
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-    }
-
-    .arch-core-features span {
-        background: rgba(15, 23, 42, 0.6);
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        border: 1px solid var(--border);
-    }
-
-    .arch-core-desc {
-        max-width: 600px;
-        margin: 1.5rem auto;
-        color: var(--text-secondary);
-        line-height: 1.6;
-    }
-
-    .arch-core-actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        margin-top: 1.5rem;
-    }
-
-    .btn-outline {
-        background: transparent;
-        border: 2px solid var(--accent);
-        color: var(--accent);
-    }
-
-    .btn-outline:hover {
-        background: var(--accent);
-        color: var(--bg-dark);
-    }
-
-    .btn-ghost {
-        background: transparent;
-        color: var(--text-secondary);
-    }
-
-    .btn-ghost:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--text-primary);
-    }
-
-    .arch-benefits {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin-top: 3rem;
-        max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .arch-benefit {
-        text-align: center;
-    }
-
-    .arch-benefit h4 {
-        color: var(--accent);
-        margin-bottom: 0.5rem;
-        font-size: 1.125rem;
-    }
-
-    .arch-benefit p {
-        color: var(--text-secondary);
-        font-size: 0.875rem;
-        line-height: 1.6;
-    }
-
-    /* Python Developer Section */
-    .python-dev-section {
-        max-width: 1200px;
-        margin: 6rem auto;
-    }
-
-    .python-dev-card {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        background: rgba(30, 41, 59, 0.5);
-        border: 1px solid var(--accent);
-        border-radius: 1rem;
-        padding: 3rem;
-        align-items: center;
-    }
-
-    .python-dev-content h3 {
-        color: var(--accent);
-        margin-bottom: 1rem;
-        font-size: 1.75rem;
-    }
-
-    .python-dev-content p {
-        color: var(--text-secondary);
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-    }
-
-    .install-command {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        background: rgba(15, 23, 42, 0.8);
-        padding: 1rem 1.5rem;
-        border-radius: 0.5rem;
-        border: 1px solid var(--border);
-        margin: 1.5rem 0;
-    }
-
-    .install-command code {
-        flex: 1;
-        color: var(--success);
-        font-family: 'Courier New', monospace;
-        font-size: 1rem;
-    }
-
-    .copy-btn {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 0.375rem;
-        cursor: pointer;
-        font-size: 0.875rem;
-        font-weight: 600;
-        transition: background 0.2s;
-        white-space: nowrap;
-    }
-
-    .copy-btn:hover {
-        background: var(--accent);
-    }
-
-    .python-dev-links {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1.5rem;
-    }
-
-    .code-window {
-        background: #1e293b;
-        border: 1px solid var(--border);
-        border-radius: 0.75rem;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .code-header {
-        background: #0f172a;
-        padding: 0.75rem 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .code-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-    }
-
-    .code-dot-red { background: #ef4444; }
-    .code-dot-yellow { background: #f59e0b; }
-    .code-dot-green { background: #10b981; }
-
-    .code-title {
-        margin-left: auto;
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-        font-family: 'Courier New', monospace;
-    }
-
-    .code-snippet {
-        display: block;
-        padding: 1.5rem;
-        color: #cbd5e1;
-        font-size: 0.875rem;
-        line-height: 1.7;
-        overflow-x: auto;
-        font-family: 'Courier New', monospace;
-    }
-
-    /* Features */
-    .features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-
-    .feature {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 1rem;
-        padding: 2rem;
-        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-    }
-
-    .feature:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2);
-        border-color: var(--primary);
-    }
-
-    .feature-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .feature h3 {
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-    }
-
-    .feature p {
-        color: var(--text-secondary);
-        line-height: 1.8;
-    }
-
-    /* Philosophy Section */
-    .philosophy {
-        background: var(--bg-card);
-        border: 2px solid var(--primary);
-        border-radius: 1rem;
-        padding: 4rem 3rem;
-        text-align: center;
-        max-width: 1000px;
-        margin: 6rem auto;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .philosophy::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(124, 58, 237, 0.05) 0%, transparent 70%);
-        animation: rotate 30s linear infinite;
-    }
-
-    @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-
-    .philosophy-content {
-        position: relative;
-        z-index: 1;
-    }
-
-    .philosophy h2 {
-        color: var(--primary);
-        margin-bottom: 1.5rem;
-    }
-
-    .sanskrit {
-        font-size: 1.75rem;
-        color: var(--accent);
-        margin: 1.5rem 0;
-        font-weight: 600;
-        text-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
-    }
-
-    .philosophy p {
-        color: var(--text-secondary);
-        line-height: 1.8;
-        font-size: 1.125rem;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .philosophy-pillars {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin: 3rem 0;
-    }
-
-    .pillar {
-        text-align: center;
-    }
-
-    .pillar-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-    }
-
-    .pillar h4 {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
-        color: var(--primary);
-    }
-
-    .pillar p {
-        font-size: 0.875rem;
-        color: var(--text-muted);
-    }
-
-    /* CTA Section */
-    .cta {
-        background: linear-gradient(135deg, var(--accent), var(--success));
-        border-radius: 1rem;
-        padding: 4rem 2rem;
-        text-align: center;
-        margin: 6rem auto;
-        max-width: 1200px;
-    }
-
-    .cta h2 {
-        margin-bottom: 1rem;
-        color: var(--bg-dark);
-    }
-
-    .cta p {
-        font-size: 1.25rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-        color: var(--bg-dark);
-    }
-
-    .cta .btn {
-        background: white;
-        color: var(--bg-dark);
-    }
-
-    .cta-badges {
-        display: flex;
-        gap: 1.5rem;
-        justify-content: center;
-        margin: 1.5rem 0 2rem;
-        flex-wrap: wrap;
-    }
-
-    .cta-badges span {
-        background: rgba(255, 255, 255, 0.2);
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        font-size: 0.875rem;
-        color: var(--bg-dark);
-        font-weight: 600;
-    }
-
-    /* Sticky CTA Bar */
-    .sticky-cta {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, var(--accent), var(--success));
-        padding: 1rem;
-        display: none;
-        z-index: 1000;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-        animation: slideUp 0.3s ease-out;
-    }
-
-    @keyframes slideUp {
-        from { transform: translateY(100%); }
-        to { transform: translateY(0); }
-    }
-
-    .sticky-cta.visible {
-        display: block;
-    }
-
-    .sticky-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 2rem;
-    }
-
-    .sticky-content span {
-        color: var(--bg-dark);
-        font-weight: 600;
-        font-size: 1.125rem;
-    }
-
-    .sticky-close {
-        background: transparent;
-        border: none;
-        color: var(--bg-dark);
-        font-size: 1.5rem;
-        cursor: pointer;
-        opacity: 0.7;
-        transition: opacity 0.3s;
-    }
-
-    .sticky-close:hover {
-        opacity: 1;
-    }
-
-    /* Footer */
-    footer {
-        border-top: 1px solid var(--border);
-        padding: 3rem 5%;
-        margin-top: 6rem;
-    }
-
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 3rem;
-    }
-
-    .footer-section h4 {
-        margin-bottom: 1rem;
-        font-size: 1.125rem;
-        color: var(--text-primary);
-    }
-
-    .footer-section ul {
-        list-style: none;
-    }
-
-    .footer-section ul li {
-        margin-bottom: 0.5rem;
-    }
-
-    .footer-section a {
-        color: var(--text-secondary);
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-
-    .footer-section a:hover {
-        color: var(--accent);
-    }
-
-    .footer-bottom {
-        text-align: center;
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--border);
-        color: var(--text-muted);
-    }
-
-    .footer-bottom p {
-        margin: 0.5rem 0;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-        .hero {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .comparison-grid,
-        .steps,
-        .philosophy-pillars,
-        .koshas,
-        .arch-ui .arch-cards,
-        .arch-benefits {
-            grid-template-columns: 1fr;
-        }
-
-        .arch-core-features {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .arch-core-actions {
-            flex-direction: column;
-        }
-
-        .python-dev-card {
-            grid-template-columns: 1fr;
-        }
-
-        .python-dev-code {
-            order: -1;
-        }
-
-        .python-dev-links {
-            flex-direction: column;
-        }
-
-        .comparison-divider,
-        .step-arrow {
-            transform: rotate(90deg);
-            margin: 1rem 0;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero-left h1 {
-            font-size: 2.5rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-        }
-
-        nav {
-            display: none;
-        }
-
-        .hero-stats {
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .hero-stats-inline {
-            justify-content: center;
-        }
-
-        .hero-ctas {
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .btn-large {
-            width: 100%;
-            justify-content: center;
-        }
-
-        .btn-secondary.btn-large {
-            font-size: 0.875rem;
-            padding: 0.75rem 1.5rem;
-        }
-
-        .btn-label {
-            font-size: 0.7rem;
-        }
-
-        .savings-amount {
-            font-size: 2.5rem;
-        }
-
-        .sticky-content {
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .demo-video-container iframe {
-            height: 200px;
-        }
-
-        .proof-stats {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-</style>
-
 <body>
-    <div class="bg-animated"></div>
 
-    <header>
-        <a href="/" class="logo">
-            <img src="/logo.jpg" alt="Vidurai Logo">
-            <span>Vidurai</span>
-        </a>
-        <nav>
-            <a href="#features">Features</a>
-            <a href="#calculator">Calculator</a>
-            <a href="https://docs.vidurai.ai" target="_blank">Docs</a>
-            <a href="https://github.com/chandantochandan/vidurai-vscode-extension" target="_blank">GitHub</a>
-            <a href="https://marketplace.visualstudio.com/items?itemName=vidurai.vidurai" class="btn btn-primary" target="_blank">
-                Install Extension
+    <!-- Background Grid System -->
+    <div class="grid-overlay"></div>
+    <div class="vignette"></div>
+
+    <!-- Top Bar -->
+    <nav class="top-bar">
+        <div class="bar-left">
+            <a href="/" class="logo">
+                <div class="logo-box">V</div>
+                <span class="logo-text">VIDURAI <span class="version">v1.5.1</span></span>
             </a>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-left">
-            <p class="hero-foundation">
-                🧠 Powered by Vidurai SDK • Available on PyPI & VS Code Marketplace
-            </p>
-            <h1>Save $15,000/Year<br>on AI Token Costs</h1>
-            <p class="hero-subtitle">
-                Intelligent memory management for any AI coding assistant.<br>
-                Built on neuroscience-backed SDK. 90% faster, 59% cheaper. Privacy-first.
-            </p>
-            <div class="hero-stats-inline">
-                <span>💰 59% Token Reduction</span>
-                <span>⚡ 90% Time Savings</span>
-                <span>🔒 100% Local Storage</span>
-                <span>🎯 95.6/100 Quality</span>
-            </div>
-            <div class="hero-ctas">
-                <a href="https://marketplace.visualstudio.com/items?itemName=vidurai.vidurai"
-                   class="btn btn-primary btn-large"
-                   target="_blank"
-                   rel="noopener">
-                    Install VS Code Extension →
-                </a>
-                <a href="https://pypi.org/project/vidurai/"
-                   class="btn btn-secondary btn-large"
-                   target="_blank"
-                   rel="noopener">
-                    <span class="btn-label">Python developer?</span>
-                    Use SDK directly →
-                </a>
-            </div>
-            <p class="hero-note">
-                Free, open-source, MIT license. No account required.
-            </p>
         </div>
-        <div class="hero-right">
-            <div class="demo-video-container">
-                <iframe
-                    width="100%"
-                    height="315"
-                    src="https://www.youtube.com/embed/gV4sPkl5qns?autoplay=1&mute=1&loop=1&playlist=gV4sPkl5qns"
-                    title="Vidurai Demo - 90% Faster Context Sharing"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-                <div class="video-overlay">
-                    <p class="video-caption">
-                        <a href="https://youtu.be/gV4sPkl5qns" target="_blank" rel="noopener">
-                            ▶ Watch full demo (60s)
-                        </a>
+        <div class="bar-center">
+            <a href="#features">ENGINE</a>
+            <a href="#architecture">SYSTEM</a>
+            <a href="#comparison">DATA</a>
+            <a href="#pricing">METRICS</a>
+        </div>
+        <div class="bar-right">
+            <a href="https://github.com/chandantochandan/vidurai" class="nav-link">GITHUB</a>
+            <a href="https://pypi.org/project/vidurai/" class="btn-solid">INSTALL SDK</a>
+        </div>
+    </nav>
+
+    <main class="main-grid">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-text-col">
+                <div class="meta-label">
+                    <span class="indicator"></span> SYSTEM STATUS: OPTIMIZED
+                </div>
+                <h1 class="display-title">
+                    SIGNAL <br>
+                    <span class="text-stroke">NOISE</span>
+                </h1>
+                <p class="lead-text">
+                    Autonomous memory optimization for production LLMs. 
+                    Vidurai uses reinforcement learning to prune, compress, and discard context tokens.
+                </p>
+                
+                <div class="stats-row">
+                    <div class="stat-block">
+                        <span class="stat-val">59%</span>
+                        <span class="stat-label">COST REDUCTION</span>
+                    </div>
+                    <div class="stat-sep"></div>
+                    <div class="stat-block">
+                        <span class="stat-val">90%</span>
+                        <span class="stat-label">LATENCY DROP</span>
+                    </div>
+                </div>
+
+                <div class="cmd-row">
+                    <div class="cmd-line">
+                        <span class="prompt">$</span> pip install vidurai
+                    </div>
+                    <button class="copy-btn" aria-label="Copy command"></button>
+                </div>
+            </div>
+
+            <div class="hero-visual-col">
+                <!-- Preserved the 3D visuals user liked, but framed tighter -->
+                <div class="visual-frame">
+                    <div class="hud-ring ring-1"></div>
+                    <div class="hud-ring ring-2"></div>
+                    <div class="core-gem"></div>
+                    <div class="data-card card-top">
+                        <div class="card-head">RL_AGENT_STATUS</div>
+                        <div class="card-body">
+                            <div class="row"><span>STATE</span><span class="ok">ACTIVE</span></div>
+                            <div class="row"><span>COMPRESSION</span><span class="warn">HIGH</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Grid -->
+        <section class="tech-grid" id="features">
+            <div class="grid-header">
+                <h2>CORE_MODULES</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <div class="module-card rl-engine">
+                <div class="module-head">
+                    <span class="icon">🧠</span>
+                    <h3>RL OPTIMIZATION</h3>
+                </div>
+                <p>Q-Learning agent autonomously decides strategies: <code>COMPRESS</code>, <code>PRUNE</code>, or <code>RETAIN</code> based on entropy and cost penalties.</p>
+                <div class="code-display">
+                    <span class="line">def optimize(ctx):</span>
+                    <span class="line indent">action = agent.predict(ctx)</span>
+                    <span class="line indent">if action == PRUNE:</span>
+                    <span class="line indent double">ctx.reduce(0.4)</span>
+                </div>
+            </div>
+
+            <div class="module-card cost-engine">
+                <div class="module-head">
+                    <span class="icon">📉</span>
+                    <h3>COST CONTROL</h3>
+                </div>
+                <div class="big-stat">36-47%</div>
+                <p>Immediate reduction in prompt size via semantic compression.</p>
+            </div>
+
+            <div class="module-card privacy-engine">
+                <div class="module-head">
+                    <span class="icon">🔒</span>
+                    <h3>LOCAL STORAGE</h3>
+                </div>
+                <p>Zero external dependencies. No vector DBs. 100% Python. Data stays in <code>~/.vidurai/</code>.</p>
+            </div>
+        </section>
+
+        <!-- Comparison Data -->
+        <section class="data-section" id="comparison">
+            <div class="grid-header">
+                <h2>COMPARATIVE_ANALYSIS</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <div class="data-table">
+                <div class="dt-row dt-head">
+                    <div class="dt-col">METRIC</div>
+                    <div class="dt-col dim">MEM0 (LEGACY)</div>
+                    <div class="dt-col highlight">VIDURAI (NEXT)</div>
+                </div>
+                <div class="dt-row">
+                    <div class="dt-col">PRIMARY GOAL</div>
+                    <div class="dt-col">Maximize Retention</div>
+                    <div class="dt-col text-accent">Minimize Cost</div>
+                </div>
+                <div class="dt-row">
+                    <div class="dt-col">MECHANISM</div>
+                    <div class="dt-col">Additive (Inject)</div>
+                    <div class="dt-col text-accent">Subtractive (Prune)</div>
+                </div>
+                <div class="dt-row">
+                    <div class="dt-col">INFRASTRUCTURE</div>
+                    <div class="dt-col">Vector + Graph DB</div>
+                    <div class="dt-col text-accent">Local JSON/SQLite</div>
+                </div>
+                <div class="dt-row">
+                    <div class="dt-col">COST IMPACT</div>
+                    <div class="dt-col warn">High Overhead</div>
+                    <div class="dt-col text-accent">-40% Reduction</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Schematic -->
+        <section class="schematic-section" id="architecture">
+            <div class="grid-header">
+                <h2>MEMORY_HIERARCHY</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <div class="schematic-layout">
+                <div class="layer-col">
+                    <div class="layer-box l3">
+                        <div class="layer-meta">TIER 03</div>
+                        <h4>ARCHIVAL</h4>
+                        <p>Deep storage. Semantic compression.</p>
+                    </div>
+                    <div class="layer-connector"></div>
+                    <div class="layer-box l2">
+                        <div class="layer-meta">TIER 02</div>
+                        <h4>EPISODIC</h4>
+                        <p>Intelligent decay. Relevance sorting.</p>
+                    </div>
+                    <div class="layer-connector"></div>
+                    <div class="layer-box l1">
+                        <div class="layer-meta">TIER 01</div>
+                        <h4>WORKING</h4>
+                        <p>High-speed buffer. Zero latency.</p>
+                    </div>
+                </div>
+                <div class="schematic-desc">
+                    <p class="mono-text">
+                        SYSTEM ARCHITECTURE MIMICS BIOLOGICAL MEMORY RETENTION CURVES.
+                        DATA MOVES FROM HOT (WORKING) TO WARM (EPISODIC) TO COLD (ARCHIVAL)
+                        BASED ON SALIENCE SCORES.
                     </p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Stats Bar -->
-    <section class="stats">
-        <div class="stat">
-            <div class="stat-number">90%</div>
-            <div class="stat-label">Time Savings<br>(60s → 5s)</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">59%</div>
-            <div class="stat-label">Token Reduction<br>(Production Validated)</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">95.6</div>
-            <div class="stat-label">Quality Score<br>(Out of 100)</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">AI Understanding<br>(Bugs Fixed First Try)</div>
-        </div>
-    </section>
-
-    <!-- Social Proof -->
-    <section class="social-proof">
-        <p class="proof-heading">Trusted by developers worldwide</p>
-        <div class="proof-stats">
-            <div class="proof-item">
-                <div class="proof-number">18/18</div>
-                <div class="proof-label">Tests Passing</div>
+        <!-- Footer / CTA -->
+        <footer class="footer-bar">
+            <div class="footer-left">
+                <span>© 2025 VIDURAI INTELLIGENCE</span>
+                <span class="sep">|</span>
+                <span>MIT LICENSE</span>
             </div>
-            <div class="proof-item">
-                <div class="proof-number">MIT</div>
-                <div class="proof-label">Open Source</div>
+            <div class="footer-right">
+                <a href="https://pypi.org/project/vidurai/">PYPI: v1.5.1</a>
             </div>
-            <div class="proof-item">
-                <div class="proof-number">100%</div>
-                <div class="proof-label">Local Storage</div>
-            </div>
-            <div class="proof-item">
-                <div class="proof-number">24/7</div>
-                <div class="proof-label">Works Offline</div>
-            </div>
-        </div>
-    </section>
+        </footer>
 
-    <!-- ROI Calculator -->
-    <section class="calculator section" id="calculator">
-        <h2>💰 Calculate Your Savings</h2>
+    </main>
 
-        <div class="calculator-inputs">
-            <label>
-                Monthly API Spend: <span class="slider-value">$<span id="spend-value">500</span></span>
-                <input type="range" id="spend" min="0" max="10000" value="500" step="100">
-            </label>
+<style>
+    /* --- RESET & BASICS --- */
+    :root {
+        --bg: #050505;
+        --fg: #e5e5e5;
+        --fg-dim: #666;
+        --accent: #7c3aed; /* Purple */
+        --accent-dim: rgba(124, 58, 237, 0.2);
+        --success: #10b981;
+        --border: #222;
+        --border-light: #333;
+        
+        --font-head: 'Sora', sans-serif;
+        --font-body: 'IBM Plex Sans', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+    }
 
-            <label>
-                Team Size: <span class="slider-value"><span id="team-value">5</span> developers</span>
-                <input type="range" id="team" min="1" max="100" value="5" step="1">
-            </label>
-        </div>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        <div class="calculator-results">
-            <p style="color: var(--text-secondary); margin-bottom: 1rem;">💰 You Could Save:</p>
-            <div class="savings-amount">$<span id="annual-savings">0</span>/year</div>
+    body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--font-body);
+        font-size: 14px;
+        line-height: 1.5;
+        overflow-x: hidden;
+    }
 
-            <table class="breakdown">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Current</th>
-                        <th>With Vidurai</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Monthly API cost</td>
-                        <td>$<span id="current-monthly">500</span></td>
-                        <td class="highlight">$<span id="vidurai-monthly">205</span> (-59%)</td>
-                    </tr>
-                    <tr>
-                        <td>Annual team cost</td>
-                        <td>$<span id="current-annual">30,000</span></td>
-                        <td class="highlight">$<span id="vidurai-annual">12,300</span></td>
-                    </tr>
-                </tbody>
-            </table>
+    a { text-decoration: none; color: inherit; transition: color 0.2s; }
+    ul { list-style: none; }
 
-            <a href="https://marketplace.visualstudio.com/items?itemName=vidurai.vidurai" class="btn btn-primary btn-large" target="_blank" rel="noopener">
-                Install Extension & Start Saving →
-            </a>
-        </div>
+    /* --- BACKGROUND GRID --- */
+    .grid-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: 
+            linear-gradient(var(--border) 1px, transparent 1px),
+            linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.15;
+        z-index: -1;
+        pointer-events: none;
+    }
 
-        <p class="calculator-note">
-            * Token reduction powered by Vidurai SDK's intelligent gist extraction
-            and salience classification. Available as standalone Python package on
-            <a href="https://pypi.org/project/vidurai/" target="_blank" rel="noopener">PyPI</a>
-            or via VS Code extension.
-        </p>
-    </section>
+    .vignette {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle, transparent 40%, black 100%);
+        z-index: -1;
+        pointer-events: none;
+    }
 
-    <!-- Before/After Comparison -->
-    <section class="comparison section">
-        <h2>The Difference Is Clear</h2>
+    /* --- TOP BAR --- */
+    .top-bar {
+        height: 60px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        background: rgba(5,5,5,0.8);
+        backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.05em;
+    }
 
-        <div class="comparison-grid">
-            <div class="comparison-side comparison-without">
-                <h3>❌ Without Vidurai</h3>
-                <ul>
-                    <li>😫 60 seconds per context</li>
-                    <li>💸 $500/month API costs</li>
-                    <li>📋 Manual copy-paste hell</li>
-                    <li>🔀 Context switching chaos</li>
-                    <li>❌ Forgotten details, missed errors</li>
-                </ul>
-            </div>
+    .bar-left, .bar-right { display: flex; align-items: center; gap: 20px; }
+    
+    .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+    .logo-box { 
+        width: 24px; height: 24px; 
+        background: var(--accent); 
+        color: white; 
+        display: grid; place-items: center; 
+        font-weight: 800;
+    }
+    .version { color: var(--fg-dim); margin-left: 8px; font-weight: 400; }
 
-            <div class="comparison-divider">VS</div>
+    .bar-center { display: flex; gap: 32px; }
+    .bar-center a:hover { color: var(--accent); }
 
-            <div class="comparison-side comparison-with">
-                <h3>✅ With Vidurai</h3>
-                <ul>
-                    <li>⚡ 5 seconds per context</li>
-                    <li>💰 $205/month API costs</li>
-                    <li>🎯 One-click export</li>
-                    <li>🌊 Stay in flow state</li>
-                    <li>✅ Perfect context every time</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    .btn-solid {
+        background: var(--fg);
+        color: var(--bg);
+        padding: 6px 12px;
+        font-weight: 700;
+    }
+    .btn-solid:hover { background: var(--accent); color: white; }
 
-    <!-- How It Works -->
-    <section class="how-it-works section">
-        <h2>How It Works (In 3 Simple Steps)</h2>
+    /* --- MAIN GRID LAYOUT --- */
+    .main-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+        background: rgba(5,5,5,0.5);
+    }
 
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-icon">🔍</div>
-                <h3>Auto-Track</h3>
-                <p>Vidurai watches your files, terminal, and errors automatically. Zero effort required.</p>
-            </div>
+    section { padding: 60px 40px; border-bottom: 1px solid var(--border); }
 
-            <div class="step-arrow">→</div>
+    /* --- HERO --- */
+    .hero-section {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        min-height: 600px;
+        align-items: center;
+    }
 
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-icon">🧠</div>
-                <h3>Intelligent Compress</h3>
-                <p>90% compression with salience classification. Keeps what matters, forgets the rest.</p>
-            </div>
+    .meta-label {
+        font-family: var(--font-mono);
+        color: var(--success);
+        font-size: 12px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .indicator { width: 6px; height: 6px; background: var(--success); border-radius: 50%; box-shadow: 0 0 8px var(--success); }
 
-            <div class="step-arrow">→</div>
+    .display-title {
+        font-family: var(--font-head);
+        font-size: 5rem;
+        line-height: 0.9;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        margin-bottom: 32px;
+        text-transform: uppercase;
+    }
+    
+    .text-stroke {
+        -webkit-text-stroke: 2px var(--fg-dim);
+        color: transparent;
+        opacity: 0.5;
+    }
 
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-icon">⚡</div>
-                <h3>One-Click Export</h3>
-                <p>Perfect context in 5 seconds. Paste into any AI coding assistant you use.</p>
-            </div>
-        </div>
-    </section>
+    .lead-text {
+        font-size: 1.2rem;
+        color: var(--fg-dim);
+        max-width: 500px;
+        margin-bottom: 40px;
+    }
 
-    <!-- Three-Kosha Architecture (PRESERVED FROM ORIGINAL) -->
-    <section class="kosha-architecture section">
-        <h2>Three-Kosha Memory Architecture</h2>
-        <p class="kosha-subtitle">Inspired by Vedantic consciousness layers</p>
+    .stats-row {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        margin-bottom: 40px;
+    }
 
-        <div class="koshas">
-            <div class="kosha">
-                <img src="/kosha-icon.png" alt="Annamaya Kosha Icon" class="kosha-icon">
-                <h4>Annamaya Kosha</h4>
-                <p class="kosha-layer-subtitle">The Physical Sheath</p>
-                <p>High-speed, volatile working memory. A sliding window for immediate context. Built for speed, not permanence.</p>
-            </div>
+    .stat-block { display: flex; flex-direction: column; }
+    .stat-val { font-family: var(--font-head); font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .stat-label { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); margin-top: 4px; }
+    .stat-sep { width: 1px; height: 40px; background: var(--border); }
 
-            <div class="kosha">
-                <img src="/kosha-icon.png" alt="Manomaya Kosha Icon" class="kosha-icon">
-                <h4>Manomaya Kosha</h4>
-                <p class="kosha-layer-subtitle">The Mental Sheath</p>
-                <p>Active episodic memory with intelligent decay. Memories fade based on relevance and usage, not just time.</p>
-            </div>
+    .cmd-row {
+        background: #111;
+        border: 1px solid var(--border-light);
+        padding: 12px 16px;
+        font-family: var(--font-mono);
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        max-width: 400px;
+    }
+    .prompt { color: var(--accent); margin-right: 8px; }
+    .copy-btn { 
+        width: 16px; height: 16px; 
+        background: var(--fg-dim); 
+        border: none; margin-left: auto; 
+        mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z'/%3E%3C/svg%3E");
+        cursor: pointer;
+    }
+    .copy-btn:hover { background: white; }
 
-            <div class="kosha">
-                <img src="/kosha-icon.png" alt="Vijnanamaya Kosha Icon" class="kosha-icon">
-                <h4>Vijnanamaya Kosha</h4>
-                <p class="kosha-layer-subtitle">The Wisdom Sheath</p>
-                <p>Deep archival memory. Distilled wisdom, core preferences, foundational knowledge. Updated, never forgotten.</p>
-            </div>
-        </div>
+    /* --- HERO VISUAL --- */
+    .visual-frame {
+        width: 100%;
+        height: 400px;
+        position: relative;
+        border: 1px solid var(--border);
+        background: radial-gradient(circle, #111 0%, #050505 70%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        perspective: 800px;
+    }
 
-        <p class="kosha-note">
-            Implemented in the <a href="https://pypi.org/project/vidurai/" target="_blank" rel="noopener">Vidurai SDK</a>
-            using reinforcement learning and fuzzy-trace theory.
-            <a href="https://github.com/chandantochandan/vidurai/blob/main/research/VIDURAI_RESEARCH.md" target="_blank" rel="noopener">
-                Read the research paper →
-            </a>
-        </p>
-    </section>
+    .hud-ring {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px dashed var(--border-light);
+    }
+    .ring-1 { width: 250px; height: 250px; animation: rot 20s linear infinite; }
+    .ring-2 { width: 350px; height: 350px; border-color: var(--accent-dim); animation: rot 30s linear infinite reverse; }
+    .core-gem { width: 60px; height: 60px; background: var(--accent); filter: blur(30px); opacity: 0.4; }
 
-    <!-- Architecture Section -->
-    <section class="section architecture-section" id="architecture">
-        <h2>Built on Solid Foundations</h2>
-        <p class="section-subtitle">
-            Vidurai uses a layered architecture where the SDK provides
-            the intelligence and integrations provide the interfaces.
-        </p>
+    .data-card {
+        position: absolute;
+        width: 180px;
+        background: rgba(0,0,0,0.8);
+        border: 1px solid var(--accent);
+        padding: 12px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        top: 20%; right: 10%;
+        box-shadow: 0 10px 30px black;
+    }
+    .card-head { border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 8px; color: var(--accent); font-weight: 700; }
+    .row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .ok { color: var(--success); } .warn { color: #fbbf24; }
 
-        <div class="architecture-diagram">
-            <!-- Top Layer: User Interfaces -->
-            <div class="arch-layer arch-ui">
-                <h3>🖥️ User Interfaces</h3>
-                <div class="arch-cards">
-                    <div class="arch-card arch-active">
-                        <span class="arch-icon">💻</span>
-                        <h4>VS Code Extension</h4>
-                        <p>Available now on Marketplace</p>
-                        <a href="https://marketplace.visualstudio.com/items?itemName=vidurai.vidurai" class="arch-link" target="_blank" rel="noopener">Install →</a>
-                    </div>
-                    <div class="arch-card arch-coming">
-                        <span class="arch-icon">💡</span>
-                        <h4>JetBrains Plugin</h4>
-                        <p>Coming Q3 2025</p>
-                    </div>
-                    <div class="arch-card arch-coming">
-                        <span class="arch-icon">⚡</span>
-                        <h4>CLI Tool</h4>
-                        <p>Coming Q4 2025</p>
-                    </div>
-                </div>
-            </div>
+    /* --- TECH GRID --- */
+    .grid-header { margin-bottom: 40px; display: flex; align-items: center; gap: 20px; }
+    .grid-header h2 { font-family: var(--font-mono); font-size: 1rem; color: var(--fg-dim); }
+    .header-line { flex: 1; height: 1px; background: var(--border); }
 
-            <!-- Arrow Down -->
-            <div class="arch-arrow">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                    <path d="M20 5 L20 30 M12 22 L20 30 L28 22" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
-                </svg>
-            </div>
+    .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px; /* Border trick */
+        background: var(--border); /* Grid line color */
+        padding: 1px 40px; /* Adjust for border */
+    }
+    
+    /* Reset padding for grid children to handle borders manually */
+    .tech-grid { 
+        display: block; 
+        padding: 60px 40px;
+    }
+    .tech-grid .grid-header { margin-bottom: 40px; }
+    
+    /* Actually using flex wrap for the cards to control spacing better in this style */
+    .tech-grid { display: flex; flex-wrap: wrap; gap: 24px; align-content: stretch; }
+    .grid-header { width: 100%; }
 
-            <!-- Bottom Layer: Core SDK -->
-            <div class="arch-layer arch-core">
-                <h3>🧠 Vidurai SDK (Core Intelligence)</h3>
-                <div class="arch-core-features">
-                    <span>Three-Kosha Memory Architecture</span>
-                    <span>Salience Classification</span>
-                    <span>Gist Extraction (90% compression)</span>
-                    <span>Privacy-First Local Storage</span>
-                </div>
-                <p class="arch-core-desc">
-                    Open-source Python package powering all Vidurai integrations.
-                    Use standalone in any project or via our extensions.
-                </p>
-                <div class="arch-core-actions">
-                    <a href="https://pypi.org/project/vidurai/" class="btn btn-outline" target="_blank" rel="noopener">
-                        View on PyPI →
-                    </a>
-                    <a href="https://docs.vidurai.ai/sdk/quickstart" class="btn btn-ghost" target="_blank" rel="noopener">
-                        SDK Docs
-                    </a>
-                </div>
-            </div>
-        </div>
+    .module-card {
+        flex: 1;
+        min-width: 300px;
+        border: 1px solid var(--border);
+        padding: 24px;
+        background: rgba(255,255,255,0.02);
+    }
 
-        <div class="arch-benefits">
-            <div class="arch-benefit">
-                <h4>🔌 Extensible</h4>
-                <p>SDK powers multiple interfaces. Use it in any Python project.</p>
-            </div>
-            <div class="arch-benefit">
-                <h4>🧪 Battle-Tested</h4>
-                <p>18/18 tests passing. Production-validated with 95.6/100 quality score.</p>
-            </div>
-            <div class="arch-benefit">
-                <h4>🌐 Open Source</h4>
-                <p>Both SDK and extensions are MIT-licensed. Community-driven development.</p>
-            </div>
-        </div>
-    </section>
+    .module-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: var(--accent); }
+    .module-head h3 { font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.05em; }
+    .icon { font-size: 16px; }
 
-    <!-- Features -->
-    <section class="section" id="features">
-        <h2>Why Developers Love Vidurai</h2>
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <h3>Automatic Tracking</h3>
-                <p>Watches files, terminal, and errors automatically. No manual copy-paste. No context switching. Stay in flow.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🧠</div>
-                <h3>Intelligent Forgetting</h3>
-                <p>Salience classification (CRITICAL → NOISE) remembers what matters and forgets the rest. Like your brain does.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">💰</div>
-                <h3>59% Token Reduction</h3>
-                <p>Gist extraction compresses context by 90% while maintaining 100% accuracy. Real savings on every API call.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔒</div>
-                <h3>Privacy First</h3>
-                <p>Local storage only. No cloud. Auto-detects and redacts secrets. Your code never leaves your machine.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🎯</div>
-                <h3>Works With Any AI</h3>
-                <p>Compatible with all text-based AI coding assistants. One-click export for any tool you use.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🚀</div>
-                <h3>Zero Config</h3>
-                <p>Auto-detects Python, installs dependencies. Works offline. No account needed. Just install and code.</p>
-            </div>
-        </div>
-    </section>
+    .code-display {
+        margin-top: 20px;
+        background: #000;
+        border: 1px solid var(--border);
+        padding: 12px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-dim);
+    }
+    .indent { margin-left: 16px; }
+    .double { margin-left: 32px; }
+    .big-stat { font-family: var(--font-head); font-size: 3rem; font-weight: 700; color: white; margin: 20px 0; }
 
-    <!-- Python Developer Section -->
-    <section class="section python-dev-section" id="sdk">
-        <div class="python-dev-card">
-            <div class="python-dev-content">
-                <h3>🐍 Python Developer?</h3>
-                <p>
-                    You can use the Vidurai SDK directly in any Python project—
-                    no VS Code required. Perfect for Jupyter notebooks, CLI tools,
-                    or custom AI integrations.
-                </p>
-                <div class="install-command">
-                    <code>pip install vidurai</code>
-                    <button class="copy-btn" onclick="navigator.clipboard.writeText('pip install vidurai'); this.textContent='✓ Copied!'; setTimeout(() => this.textContent='📋 Copy', 2000)">
-                        📋 Copy
-                    </button>
-                </div>
-                <div class="python-dev-links">
-                    <a href="https://pypi.org/project/vidurai/" class="btn btn-outline" target="_blank" rel="noopener">
-                        View on PyPI →
-                    </a>
-                    <a href="https://docs.vidurai.ai/sdk/quickstart" class="btn btn-ghost" target="_blank" rel="noopener">
-                        SDK Quickstart
-                    </a>
-                </div>
-            </div>
-            <div class="python-dev-code">
-                <div class="code-window">
-                    <div class="code-header">
-                        <span class="code-dot code-dot-red"></span>
-                        <span class="code-dot code-dot-yellow"></span>
-                        <span class="code-dot code-dot-green"></span>
-                        <span class="code-title">example.py</span>
-                    </div>
-                    <pre><code class="code-snippet">from vidurai import VismritiMemory
+    /* --- DATA TABLE --- */
+    .data-table {
+        width: 100%;
+        border: 1px solid var(--border);
+        font-family: var(--font-mono);
+        font-size: 12px;
+    }
 
-# Initialize memory
-memory = VismritiMemory()
+    .dt-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border-bottom: 1px solid var(--border);
+    }
+    .dt-row:last-child { border-bottom: none; }
 
-# Remember something
-memory.remember(
-    verbatim="Fixed auth bug in login.py",
-    gist="Auth bug fixed",
-    salience="HIGH"
-)
+    .dt-col { padding: 16px 24px; border-right: 1px solid var(--border); }
+    .dt-col:last-child { border-right: none; }
 
-# Recall later for AI context
-context = memory.recall("auth bug")
-print(context)
-# → "Auth bug fixed"</code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
+    .dt-head { background: #111; color: var(--fg-dim); font-weight: 700; }
+    .highlight { color: var(--accent); }
+    .text-accent { color: var(--accent); font-weight: 700; }
+    .warn { color: #fbbf24; }
 
-    <!-- Philosophy Section -->
-    <section class="philosophy section">
-        <div class="philosophy-content">
-            <h2>Ancient Wisdom Meets Modern AI</h2>
-            <p class="sanskrit">विस्मृति भी विद्या है</p>
-            <p style="font-size: 1.25rem; margin-bottom: 2rem; font-style: italic;">"Forgetting too is knowledge"</p>
+    /* --- SCHEMATIC --- */
+    .schematic-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
 
-            <div class="philosophy-pillars">
-                <div class="pillar">
-                    <div class="pillar-icon">🕉️</div>
-                    <h4>Vedantic Wisdom</h4>
-                    <p>Drawing from ancient Sanskrit texts, we apply "viveka" (discrimination) to extract true essence of meaning.</p>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-icon">🧬</div>
-                    <h4>Fuzzy-Trace Theory</h4>
-                    <p>Based on Nobel-recognized research, we separate verbatim details from gist meaning—the way human memory works.</p>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-icon">📄</div>
-                    <h4>Academic Rigor</h4>
-                    <p>Peer-reviewed research backing every algorithm. Validated, tested, and proven to maintain 95.6/100 accuracy.</p>
-                </div>
-            </div>
+    .layer-col { display: flex; flex-direction: column; align-items: center; }
+    
+    .layer-box {
+        width: 100%;
+        max-width: 300px;
+        border: 1px solid var(--border);
+        padding: 20px;
+        background: #0a0a0a;
+        position: relative;
+    }
+    .l3 { border-top: 2px solid var(--accent); }
+    .l2 { border-left: 2px solid var(--fg-dim); }
+    .l1 { border-bottom: 2px solid var(--success); }
 
-            <p style="margin-top: 2rem;">
-                Vidurai is named after the wise minister from the Mahabharata, known for speaking truth to power,
-                ethical decision-making, and strategic wisdom. We embed these principles in code, creating AI
-                that doesn't just remember—it remembers <em>wisely</em>.
-            </p>
+    .layer-meta { font-family: var(--font-mono); font-size: 9px; color: var(--fg-dim); margin-bottom: 8px; }
+    .layer-box h4 { font-family: var(--font-head); font-size: 1.2rem; margin-bottom: 4px; }
+    .layer-box p { font-size: 12px; color: var(--fg-dim); }
 
-            <p style="margin-top: 2rem;">
-                <a href="https://github.com/chandantochandan/vidurai#research"
-                   style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 1.125rem;">
-                    📄 Read Our Research Paper →
-                </a>
-            </p>
-        </div>
-    </section>
+    .layer-connector { width: 1px; height: 30px; background: var(--border); }
 
-    <!-- Final CTA -->
-    <section class="cta section">
-        <h2>Ready to Save 90% of Your Context Gathering Time?</h2>
-        <p>Free, open-source, and privacy-first. Join developers worldwide.</p>
+    .mono-text { font-family: var(--font-mono); color: var(--fg-dim); max-width: 300px; font-size: 12px; line-height: 1.6; }
 
-        <div class="cta-badges">
-            <span>✓ Production Validated</span>
-            <span>✓ 36.6%+ Token Reduction</span>
-            <span>✓ MIT License</span>
-            <span>✓ 95.6/100 Score</span>
-        </div>
+    /* --- FOOTER --- */
+    .footer-bar {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--fg-dim);
+        border-top: 1px solid var(--border);
+    }
+    .sep { margin: 0 12px; color: var(--border); }
+    .footer-right a:hover { color: var(--accent); }
 
-        <a href="https://marketplace.visualstudio.com/items?itemName=vidurai.vidurai" class="btn btn-large" target="_blank">
-            Install VS Code Extension Free
-        </a>
-    </section>
+    @keyframes rot { to { transform: rotate(360deg); } }
 
-    <!-- Sticky CTA Bar -->
-    <div class="sticky-cta" id="sticky-cta">
-        <div class="sticky-content">
-            <span>💰 Save $15K/year per developer</span>
-            <a href="https://marketplace.visualstudio.com/items?itemName=vidurai.vidurai" class="btn btn-primary" target="_blank">
-                Install Extension Free →
-            </a>
-            <button class="sticky-close" onclick="document.getElementById('sticky-cta').style.display='none'">✕</button>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Products</h4>
-                <ul>
-                    <li><a href="https://marketplace.visualstudio.com/items?itemName=vidurai.vidurai" target="_blank" rel="noopener">
-                        🖥️ VS Code Extension
-                    </a></li>
-                    <li><a href="https://pypi.org/project/vidurai/" target="_blank" rel="noopener">
-                        🧠 Vidurai SDK (PyPI)
-                    </a></li>
-                    <li><a href="https://github.com/chandantochandan/vidurai-vscode-extension/blob/main/docs/ROADMAP.md" target="_blank" rel="noopener">
-                        📋 Roadmap
-                    </a></li>
-                    <li><a href="https://github.com/chandantochandan/vidurai-vscode-extension/releases" target="_blank" rel="noopener">
-                        📝 Changelog
-                    </a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="https://github.com/chandantochandan/vidurai-vscode-extension#quick-start" target="_blank">Quick Start Guide</a></li>
-                    <li><a href="https://github.com/chandantochandan/vidurai-vscode-extension/blob/main/docs/CASE_STUDY.md" target="_blank">Case Studies</a></li>
-                    <li><a href="https://github.com/chandantochandan/vidurai#research" target="_blank">Research Paper</a></li>
-                    <li><a href="https://github.com/chandantochandan/vidurai-vscode-extension/blob/main/CONTRIBUTING.md" target="_blank">Contributing</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Community</h4>
-                <ul>
-                    <li><a href="https://github.com/chandantochandan/vidurai-vscode-extension" target="_blank">GitHub (Extension)</a></li>
-                    <li><a href="https://github.com/chandantochandan/vidurai" target="_blank">GitHub (SDK)</a></li>
-                    <li><a href="https://discord.gg/DHdgS8eA" target="_blank">Discord</a></li>
-                    <li><a href="https://github.com/chandantochandan/vidurai-vscode-extension/discussions" target="_blank">Discussions</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>About</h4>
-                <ul>
-                    <li><a href="https://github.com/chandantochandan" target="_blank">Team</a></li>
-                    <li><a href="https://github.com/chandantochandan/vidurai-vscode-extension/blob/main/LICENSE" target="_blank">License (MIT)</a></li>
-                    <li><a href="mailto:contact@vidurai.ai">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p style="font-size: 1.125rem; color: var(--accent);">विस्मृति भी विद्या है</p>
-            <p style="margin-top: 0.5rem; font-style: italic;">"Forgetting too is knowledge"</p>
-            <p style="margin-top: 1.5rem;">Building the conscience layer for AI, one memory at a time</p>
-            <p style="margin-top: 0.5rem;">© 2025 Vidurai • MIT License</p>
-        </div>
-    </footer>
-
-    <script>
-        // ROI Calculator
-        const spendSlider = document.getElementById('spend');
-        const teamSlider = document.getElementById('team');
-
-        function updateCalculator() {
-            const monthlySpend = parseInt(spendSlider.value);
-            const teamSize = parseInt(teamSlider.value);
-
-            // Calculations (59% reduction)
-            const currentMonthly = monthlySpend;
-            const viduraiMonthly = Math.round(monthlySpend * 0.41);
-            const currentAnnual = currentMonthly * 12 * teamSize;
-            const viduraiAnnual = viduraiMonthly * 12 * teamSize;
-            const annualSavings = currentAnnual - viduraiAnnual;
-
-            // Update UI
-            document.getElementById('spend-value').textContent = monthlySpend;
-            document.getElementById('team-value').textContent = teamSize;
-            document.getElementById('annual-savings').textContent = annualSavings.toLocaleString();
-            document.getElementById('current-monthly').textContent = currentMonthly;
-            document.getElementById('vidurai-monthly').textContent = viduraiMonthly;
-            document.getElementById('current-annual').textContent = currentAnnual.toLocaleString();
-            document.getElementById('vidurai-annual').textContent = viduraiAnnual.toLocaleString();
-        }
-
-        spendSlider.addEventListener('input', updateCalculator);
-        teamSlider.addEventListener('input', updateCalculator);
-        updateCalculator(); // Initial calculation
-
-        // Sticky CTA Bar (show after 1000px scroll)
-        window.addEventListener('scroll', () => {
-            const stickyBar = document.getElementById('sticky-cta');
-            if (window.scrollY > 1000) {
-                stickyBar.classList.add('visible');
-            } else {
-                stickyBar.classList.remove('visible');
-            }
-        });
-    </script>
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+        .hero-section { grid-template-columns: 1fr; text-align: left; }
+        .display-title { font-size: 3.5rem; }
+        .schematic-layout { grid-template-columns: 1fr; }
+        .bar-center { display: none; }
+        .dt-row { grid-template-columns: 1fr 1fr; }
+        .dt-col:nth-child(2) { display: none; } /* Hide legacy col on mobile */
+        .tech-grid { flex-direction: column; }
+    }
+</style>
 </body>
 </html>
